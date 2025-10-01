@@ -1,0 +1,202 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "swiper/css/scrollbar";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Couleurs adaptées de QuickEat */
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --callout-rgb: 238, 240, 241;
+    --callout-border-rgb: 172, 175, 176;
+    --card-rgb: 180, 185, 188;
+    --card-border-rgb: 131, 134, 135;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-start-rgb));
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  /* Styles adaptés de QuickEat Home.module.css */
+  .livo-main {
+    @apply flex flex-col justify-between items-center py-24 min-h-screen;
+  }
+
+  .livo-description {
+    @apply flex justify-between items-center text-sm max-w-[var(--max-width)] w-full z-20 font-mono;
+  }
+
+  .livo-description a {
+    @apply flex justify-center items-center gap-2;
+  }
+
+  .livo-description p {
+    @apply relative m-0 p-4 bg-white/50 border border-gray-200/30 rounded-xl;
+  }
+
+  .livo-code {
+    @apply font-bold font-mono;
+  }
+
+  .livo-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-[var(--max-width)];
+  }
+
+  .livo-card {
+    @apply p-4 rounded-xl bg-white/0 border border-gray-200/0 transition-all duration-200;
+  }
+
+  .livo-card:hover {
+    @apply bg-white/10 border border-gray-200/15;
+  }
+
+  .livo-card span {
+    @apply inline-block transition-transform duration-200;
+  }
+
+  .livo-card:hover span {
+    @apply translate-x-1;
+  }
+
+  .livo-center {
+    @apply flex justify-center items-center relative py-16;
+  }
+
+  .livo-center::before {
+    content: '';
+    @apply absolute left-1/2 bg-gradient-to-r from-orange-200 to-yellow-200 rounded-full w-96 h-72 -ml-80 blur-3xl;
+  }
+
+  .livo-center::after {
+    content: '';
+    @apply absolute left-1/2 bg-gradient-to-r from-orange-400 to-yellow-400 w-48 h-36 -ml-24 blur-3xl;
+  }
+
+  .livo-center::before,
+  .livo-center::after {
+    transform: translateZ(0);
+  }
+
+  /* Animations spécifiques Livo */
+  @keyframes livo-rotate {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  /* Composants réutilisables Livo */
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-200 hover:bg-secondary-300 text-secondary-800 font-medium py-3 px-6 rounded-lg transition-colors duration-200;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-livo-lg hover:-translate-y-1;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+
+  .footer-link-hover {
+    @apply transition-all duration-300 transform hover:translate-x-1;
+  }
+  
+  .social-icon-hover {
+    @apply transition-all duration-300 hover:scale-110;
+  }
+  .social-icon {
+    @apply w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary-500 transition-all duration-300 hover:scale-110;
+  }
+  
+  .footer-legal-link {
+    @apply text-gray-400 hover:text-white transition-colors;
+  }
+}
+
+@layer utilities {
+  /* Responsive adaptations de QuickEat */
+  @media (max-width: 700px) {
+    .livo-grid {
+      @apply grid-cols-1 max-w-xs text-center;
+    }
+    
+    .livo-card {
+      @apply px-6;
+    }
+    
+    .livo-center {
+      @apply py-32;
+    }
+  }
+
+  @media (min-width: 701px) and (max-width: 1120px) {
+    .livo-grid {
+      @apply grid-cols-2;
+    }
+  }
+
+  /* Support reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .livo-card:hover span {
+      transform: none;
+    }
+  }
+}
+
+/* Owl Carousel compatibility */
+.owl-carousel {
+  display: block;
+}
+
+/* Swiper customizations */
+.swiper-pagination-bullet-active {
+  @apply bg-primary-500;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  @apply text-primary-500;
+}

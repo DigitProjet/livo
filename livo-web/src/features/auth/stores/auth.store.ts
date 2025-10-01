@@ -1,0 +1,1 @@
+// État local auth (Zustand)

@@ -1,0 +1,1 @@
+// HOC pour routes protégées

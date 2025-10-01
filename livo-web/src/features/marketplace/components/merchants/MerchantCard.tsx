@@ -1,0 +1,1 @@
+// Carte marchand avec rating
