@@ -23,3 +23,10 @@ sequelize.sync().then(() => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+const productRoutes = require("./src/routes/productRoutes");
+app.use("/api/products", productRoutes);
+
+
+const orderRoutes = require("./src/routes/orderRoutes");
+app.use("/api/orders", orderRoutes);

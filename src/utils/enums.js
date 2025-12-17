@@ -15,3 +15,18 @@ const UserRole = {
   
   module.exports = { UserRole, AccountStatus };
   
+
+  const ProductCategory = {
+    FOOD: "FOOD",
+    DRINKS: "DRINKS",
+    HYGIENE: "HYGIENE",
+    SUPPLIES: "SUPPLIES",
+    OTHER: "OTHER",
+  };
+  
+  module.exports = {
+    UserRole,
+    AccountStatus,
+    ProductCategory
+  };
+  
