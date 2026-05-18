@@ -1,32 +1,116 @@
-// src/utils/enums.js
 const UserRole = {
-    CLIENT: "CLIENT",
-    MARCHANT: "MARCHANT",
-    COURIER: "COURIER",
-    ADMIN: "ADMIN",
-  };
-  
-  const AccountStatus = {
-    ACTIVE: "ACTIVE",
-    SUSPENDED: "SUSPENDED",
-    DELETED: "DELETED",
-    PENDING: "PENDING",
-  };
-  
-  module.exports = { UserRole, AccountStatus };
-  
+  CLIENT: "CLIENT",
+  MARCHANT: "MARCHANT",
+  COURIER: "COURIER",
+  ADMIN: "ADMIN",
+};
 
-  const ProductCategory = {
-    FOOD: "FOOD",
-    DRINKS: "DRINKS",
-    HYGIENE: "HYGIENE",
-    SUPPLIES: "SUPPLIES",
-    OTHER: "OTHER",
-  };
-  
-  module.exports = {
-    UserRole,
-    AccountStatus,
-    ProductCategory
-  };
-  
+const AccountStatus = {
+  ACTIVE: "ACTIVE",
+  SUSPENDED: "SUSPENDED",
+  DELETED: "DELETED",
+  PENDING: "PENDING",
+};
+
+const ProductCategory = {
+  FOOD: "FOOD",
+  DRINKS: "DRINKS",
+  HYGIENE: "HYGIENE",
+  SUPPLIES: "SUPPLIES",
+  OTHER: "OTHER",
+};
+
+const OrderStatus = {
+  PENDING: "PENDING",
+  ACCEPTED: "ACCEPTED",
+  PREPARING: "PREPARING",
+  READY: "READY",
+  PICKED_UP: "PICKED_UP",
+  IN_TRANSIT: "IN_TRANSIT",
+  DELIVERED: "DELIVERED",
+  CANCELLED: "CANCELLED",
+  REFUNDED: "REFUNDED",
+};
+
+const PaymentMethod = {
+  MOBILE_MONEY: "MOBILE_MONEY",
+  CARD: "CARD",
+  CASH_ON_DELIVERY: "CASH_ON_DELIVERY",
+};
+
+const PaymentStatus = {
+  PENDING: "PENDING",
+  SUCCESS: "SUCCESS",
+  FAILED: "FAILED",
+  REFUNDED: "REFUNDED",
+};
+
+const DeliveryStatus = {
+  PENDING: "PENDING",
+  ACCEPTED: "ACCEPTED",
+  PICKING_UP: "PICKING_UP",
+  PICKED_UP: "PICKED_UP",
+  IN_TRANSIT: "IN_TRANSIT",
+  DELIVERED: "DELIVERED",
+  CANCELLED: "CANCELLED",
+  FAILED: "FAILED",
+};
+
+const CourierAvailability = {
+  AVAILABLE: "AVAILABLE",
+  BUSY: "BUSY",
+  OFFLINE: "OFFLINE",
+  ON_BREAK: "ON_BREAK",
+};
+
+const SubscriptionPlan = {
+  FREE: "FREE",
+  LIVEO_PLUS_MONTHLY: "LIVEO_PLUS_MONTHLY",
+  LIVEO_PLUS_YEARLY: "LIVEO_PLUS_YEARLY",
+};
+
+const SubscriptionStatus = {
+  ACTIVE: "ACTIVE",
+  EXPIRED: "EXPIRED",
+  CANCELLED: "CANCELLED",
+  PENDING: "PENDING",
+};
+
+const TransactionType = {
+  DEPOSIT: "DEPOSIT",
+  WITHDRAWAL: "WITHDRAWAL",
+  PAYMENT: "PAYMENT",
+  REFUND: "REFUND",
+  EARNING: "EARNING",
+  SUBSCRIPTION: "SUBSCRIPTION",
+};
+
+const NotificationType = {
+  ORDER_CREATED: "ORDER_CREATED",
+  ORDER_ACCEPTED: "ORDER_ACCEPTED",
+  ORDER_PREPARING: "ORDER_PREPARING",
+  ORDER_PICKED_UP: "ORDER_PICKED_UP",
+  ORDER_DELIVERED: "ORDER_DELIVERED",
+  ORDER_CANCELLED: "ORDER_CANCELLED",
+  PROMOTION: "PROMOTION",
+  PAYMENT_RECEIVED: "PAYMENT_RECEIVED",
+  LIVEO_PLUS_EXPIRY: "LIVEO_PLUS_EXPIRY",
+  SYSTEM: "SYSTEM",
+  WITHDRAWAL_STATUS: "WITHDRAWAL_STATUS",
+  SUPPORT_RESPONSE: "SUPPORT_RESPONSE",
+};
+
+module.exports = {
+  UserRole,
+  AccountStatus,
+  ProductCategory,
+  OrderStatus,
+  PaymentMethod,
+  PaymentStatus,
+  DeliveryStatus,
+  CourierAvailability,
+  SubscriptionPlan,
+  SubscriptionStatus,
+  TransactionType,
+  NotificationType,
+};

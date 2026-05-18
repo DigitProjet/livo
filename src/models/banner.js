@@ -2,8 +2,8 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 const Merchant = require("./merchant");
 
-const Promotion = sequelize.define(
-  "Promotion",
+const Banner = sequelize.define(
+  "Banner",
   {
     id: {
       type: DataTypes.UUID,
@@ -12,12 +12,7 @@ const Promotion = sequelize.define(
     },
     merchantId: {
       type: DataTypes.UUID,
-      allowNull: true, // NULL = promotion globale Livo
-    },
-    code: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      allowNull: true,
     },
     title: {
       type: DataTypes.STRING,
@@ -27,33 +22,25 @@ const Promotion = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    type: {
-      type: DataTypes.ENUM("PERCENTAGE", "FIXED_AMOUNT", "FREE_DELIVERY"),
+    imageUrl: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    value: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
+    linkType: {
+      type: DataTypes.ENUM("PRODUCT", "MERCHANT", "PROMOTION", "EXTERNAL"),
+      defaultValue: "EXTERNAL",
     },
-    minOrderAmount: {
-      type: DataTypes.DECIMAL(10, 2),
-      defaultValue: 0,
-    },
-    maxDiscount: {
-      type: DataTypes.DECIMAL(10, 2),
+    linkValue: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
-    usageLimit: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+    position: {
+      type: DataTypes.ENUM("HOME", "CATEGORY", "MERCHANT_PAGE"),
+      defaultValue: "HOME",
     },
-    usedCount: {
+    priority: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
-    },
-    perUserLimit: {
-      type: DataTypes.INTEGER,
-      defaultValue: 1,
     },
     startDate: {
       type: DataTypes.DATE,
@@ -70,16 +57,19 @@ const Promotion = sequelize.define(
     isSponsored: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-      comment: "Publicité payante"
+    },
+    clickCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     },
   },
   {
-    tableName: "promotions",
+    tableName: "banners",
     timestamps: true,
   }
 );
 
-Merchant.hasMany(Promotion, { foreignKey: "merchantId", onDelete: "SET NULL" });
-Promotion.belongsTo(Merchant, { foreignKey: "merchantId" });
+Merchant.hasMany(Banner, { foreignKey: "merchantId", onDelete: "SET NULL" });
+Banner.belongsTo(Merchant, { foreignKey: "merchantId" });
 
-module.exports = Promotion;
+module.exports = Banner;
